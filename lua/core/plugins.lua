@@ -9,6 +9,7 @@ local ensure_packer = function()
   return false
 end
 
+
 local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
@@ -18,13 +19,16 @@ return require('packer').startup(function(use)
   use 'nvim-tree/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
   use 'nvim-treesitter/nvim-treesitter'
-
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'L3MON4D3/LuaSnip'
+  use 'saadparwaiz1/cmp_luasnip'
+  use 'rafamadriz/friendly-snippets'
   use {
 	  'nvim-telescope/telescope.nvim',
 	  tag = '0.1.6',
 	  requires= { {'nvim-lua/plenary.nvim'} }
   }
-  
   use {
 	  'williamboman/mason.nvim',
 	  'williamboman/mason-lspconfig.nvim',
@@ -41,3 +45,5 @@ return require('packer').startup(function(use)
     require('packer').sync()
   end
 end)
+
+
