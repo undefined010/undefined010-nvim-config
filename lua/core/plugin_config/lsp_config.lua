@@ -1,16 +1,16 @@
 require('mason').setup()
 require('mason-lspconfig').setup({
-	ensure_installed = {'lua_ls','clangd','intelephense'}
+	ensure_installed = {'lua_ls','clangd','rust_analyzer'}
 })
 
 local on_attach = function(_,_)
-	vim.keymap('n','<leader>rn',vim.lsb.buf.rename,{})
-	vim.keymap('n','<leader>cn',vim.lsb.buf.code_action,{})
+	vim.keymap.set('n','<leader>rn',vim.lsp.buf.rename,{})
+	vim.keymap.set('n','<leader>cn',vim.lsp.buf.code_action,{})
 
-	vim.keymap('n','gd',vim.lsp.buf.definition,{})
-    vim.keymap('n','gi',vim.lsp.buf.implementation,{})
-	vim.keymap('n','gr',require('telescope.builtin').lsp_references,{})
-	vim.keymap('n','K',vim.lsp.buf.hover,{})
+	vim.keymap.set('n','gd',vim.lsp.buf.definition,{})
+    vim.keymap.set('n','gi',vim.lsp.buf.implementation,{})
+	vim.keymap.set('n','gr',require('telescope.builtin').lsp_references,{})
+	vim.keymap.set('n','K',vim.lsp.buf.hover,{})
 end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -29,8 +29,7 @@ require('lspconfig').clangd.setup{
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
-
-require('lspconfig').intelephense.setup{
+require('lspconfig').rust_analyzer.setup{
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
